@@ -1,0 +1,115 @@
+Cohort: Steam Players who leave Reviews
+Steam Players are a strong representation of the gaming market. There are over 1 billion Steam accounts and 90 million active users, which shows how large the videogame industry has become. Many of these players leave reviews of games that they have previously played. These can range from short comments to long narratives deconstrucing every aspect of the their experience with each game. There are millions of steam reviews out there that can help us identify what steam players are interested in playing.
+
+DataSets:
+    Steam_reviews - a sample of reviews posted by U.S. steam reviewers
+    steam_games_description - has attribute data that describes the reviewed games including Genres, Platform, Language, original price and Tags
+    
+Variables:
+    steam_reviews 
+        date_posted - The date the review was posted
+        funny - The number of users who found the review funny
+        helpful - The number of users who found the review funny
+        hour_played - The number of hours that the reviewer played the reviewed game
+        is_early_access_review - (True/False) Is the reviewer given access to the game before the general public
+        recommendation - (Recommended/Not Recommended) Does the reviewer recommend the game or not
+        review - (Free text) The reviewer's full review of the game
+        title - The title of the reviewed game
+    steam_games_description
+        id - unique id for each Steam game
+        Name - Steam game title
+        RawgID - ID associated with RAWG API
+        SteamURL - Steam URL
+        Metacritic - Metacritic Rating based on critical review scores
+        Genres - Genres associated with the game
+        Indie - (True/False) was the game developed by an indie developer?
+        Presence - Total number of social media articles, e.g. Reddit
+        Platform - Which platforms can the game be played on
+        Graphics - The minimum graphics hardware required
+        Storage - Amount of storage space required to download game
+        Memory - How much memory for the game to run
+        RatingsBreakdown - Breakdown of the RAWG ratings
+        ReleaseDate - (MM/DD/YYYY) When the game was released to the public
+        Soundtrack - (True/False) Whether or not the game was tagged for a notable soundtrack
+        Franchise - (True/False) Is the game a part of a larger franchise?
+        OriginalCost - The original price that the game sold for
+        DiscountedCost - How much the game costs on sale
+        Players - Is the game single player, coop, multiplayer, etc.
+        Controller - Whether or not the game can be played with a controller
+        Languages - List of supported languages
+        ESRB - ESRB age rating
+        Achievements - How many achievements are available in game?
+        Publisher - Who published the game?
+        Description - About section, describes gameplay, story, and sometimes mechanics
+        Tags - User generated tags that describe the game
+
+Assumptions:
+    Steam Player ages can range 13+ years old
+    We don't know if all games in the datasets can be tied togather
+    Every person who has left a review has purchased the game
+    Every person who has left a review meets minimum graphics requirements
+    Not every person who has left a review has played the game fully
+    Steam games that have more than 20+ reviews are included.
+
+Primary Question(s):
+    What are the most popular games and Why?
+    Are there key attributes of popular games? Should Steam be interested in seeing these attributes?
+    
+Secondary Questions:
+    What are key words differentiate a popular game vs an unpopular game?
+    Are there certain genres that get more engagement and why? 
+        - What are the most popular games in each category?
+    Does the reviewed game prices have an effect the reviewer's opinion of the game? 
+        - Is the game recommended?
+    Do Metacritic scores correlate with Steam player reviews?
+        - predict a game's popularity once it is released on Steam
+        - Can Metacritic be a good source of popular games to put on Steam?
+    How much does Hardware (Graphics, Storage, Memory, Platform?) affect the user's review?  
+    How much does Game Design (Genres, Platform, Players) affect the user's review?  
+    
+    *(For each popular game, how many hours do reviewers play on average?)
+    *(Platform?)
+    *(Ratings Breakdown)
+    *(Players?)
+    *(OriginalCost vs DiscountedPrice)
+    *(Indie?)
+
+Analysis:
+    DataCleanup
+        - Determine what games can be tied together with each dataset.
+        - We will provide a summary statistics for the numerical variables (Mean, median, mode, quartiles)
+        - Cleanup columns needed for analysis
+        - Data Transformation of Genres, Platform, Ratings Breakdown (Metacritic), Players
+        - Strategy for completed datesets.
+            1) Merge 2 datasets together using the name and title fields
+            2) Remove Outliers
+            3) Determine the proprtion of steam reviewers that recommend the game
+    What are key words differentiate a popular game vs an unpopular game?
+        - Determine what are popular games. Clustered bar graph by the toal number of reviews
+        - Using the sentiment analysis, top key words will be extracted using Bag-of-Words model?
+        - Word Cloud from the steam reviews within each popular game
+        - What do negative reviews mention?
+    Are there certain genres that get more engagement and why? 
+        - The Genre and Tags field contains all the genres that desribes the game in 1 field. We will have to break this up into multiple
+        fields
+        - Clustered bar graph to show games with the highest number of reviews within each genres and tags
+        - (Ask Sharath on how to work this out?)
+    Does the reviewed game prices have an effect on the reviewer's opinion of the game? 
+        - Linear regression between proportion of steam review recommendations and the original price of the games
+        - (Multiple variable regression with the original and discounted price?)
+    Do Metacritic scores correlate with Steam player reviews?
+        - Linear regression with Metacritic scores as y-axis and proportion of steam reviews recommended (%)
+        - Will have to group review dataset to make a proportion of steam reviews
+        - (Maybe make a multiple variable regression)
+    Do hrs played have an effect on the reviewer's opinion of the game? 
+        - Linear regression between proportion of steam review recommendations and the median number of hours played
+    What is the effect of Genres, Players, Platform on the user's review?  
+        - Classification Algorithim (Logistic Regression, Random Forrest, Decision Tree)
+        - (Ask Sharath on this approach?)
+
+    
+    
+    
+    
+
+
