@@ -4,3 +4,5 @@ Steam Players are a strong representation of the gaming market. There are over 1
 
 Below is the jupyter notebook used to supply the presentation.
 https://nbviewer.jupyter.org/github/terencepak/Steam-Reviews-Analytics/blob/main/Steam%20Reviews.ipynb
+
+you can also find the analysis presentation in the "Doc" folder.
